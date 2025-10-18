@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B站简洁搜索</title>
+</head>
+<style>
+    .container{
+        display:flex;
+        width: auto;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+    }
+    .centerBox{
+        display:flex;
+        width: 70%;
+        height: 70%;
+        background-color: #0ba4d4;
+        justify-content: center;
+        align-items: center;
+    }
+    .searchBox{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height:100%;
+        align-items: center;
+        justify-content: center;
+    }
+    .blank{
+        display:flex;
+        width: auto;
+        height: 30%;
+    }
+    div>form{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 10%;
+    }
+    div>form>input{
+        width:70%;
+        font-size:large;
+    }
+    div>form>button{
+        font-size:large;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <meta name="author" content="mailMailWu">
+    <div class="container">
+        <div class="centerBox">
+            <div class="searchBox">
+                <form action="" id="linkForm">
+                    <input type="text" id="userInput" autocomplete="off">
+                    <button type="submit">搜索</button>
+                </form>
+                <div class="blank"></div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+<script>
+     document.getElementById('linkForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const userInput = document.getElementById('userInput').value.trim();
+            
+            if (userInput === '') {
+                alert('请输入一个字符串');
+                return;
+            }
+            
+            // 基础链接
+            const baseUrl = 'https://search.bilibili.com/all?keyword=';
+            
+            // 连接字符串并打开新窗口
+            const fullUrl = baseUrl + encodeURIComponent(userInput);
+            window.open(fullUrl, '_blank');
+        });
+</script>
+</html>
